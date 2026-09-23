@@ -3,6 +3,7 @@ set -e
 
 export HF_HOME=/workspace/hf
 export HF_HUB_ENABLE_HF_TRANSFER=1
+export HF_HUB_OFFLINE=1
 export UV_CACHE_DIR=/workspace/uv-cache
 
 # кеши на /workspace/ переставить
