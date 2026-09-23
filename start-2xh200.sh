@@ -27,9 +27,12 @@ echo "vLLM version: $(vllm --version)"
 
 vllm serve Qwen/Qwen3.5-122B-A10B-FP8 \
   --host 127.0.0.1 --port 8000 \
+  --tensor-parallel-size 2 \
   --max-model-len 262144 \
   --max-num-seqs 16 \
-  --gpu-memory-utilization 0.95 \
+  --gpu-memory-utilization 0.92 \
   --language-model-only \
   --reasoning-parser qwen3 \
-  --enable-prefix-caching
+  --enable-auto-tool-choice --tool-call-parser qwen3_coder \
+  --enable-prefix-caching \
+  2>&1 | tee /dev/shm/vllm.log
